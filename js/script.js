@@ -1,9 +1,9 @@
 $(document).ready(function(){
 	
 	var windowWidth = $( window ).width();
-	
+
 	// Simple detect OS 
-    if($('#quickinstall').length != 0 || $('.yourselection').length !=0 ){
+	if($('#quickinstall').length != 0 || $('.yourselection').length !=0 ){
 		var OSName="Unknown OS";
 		var OSdatid="Unknown OS";
 		if (navigator.appVersion.indexOf("Win")!=-1) { OSName="Windows"; OSdatid=".win" };
@@ -11,6 +11,8 @@ $(document).ready(function(){
 		if (navigator.appVersion.indexOf("X11")!=-1) { OSName="UNIX"; OSdatid=".linux" };
 		if (navigator.appVersion.indexOf("Linux")!=-1) { OSName="Linux"; OSdatid=".linux"};
 		$('.systemdetected').html('System detected: '+OSName);
+		$('.ver-cplusplus').not(OSdatid).remove()
+		$('.ver-cli').not(OSdatid).remove()
 	}
 	
 	// Installationshinweise Landingpage
