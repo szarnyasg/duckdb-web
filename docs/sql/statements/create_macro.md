@@ -18,7 +18,7 @@ CREATE MACRO one() AS (SELECT 1);
 -- create a macro with a common table expression
 -- (parameter names get priority over column names: disambiguate using the table name)
 CREATE MACRO plus_one(a) AS (WITH cte AS (SELECT 1 AS a) SELECT cte.a + a FROM cte);
--- macro's are schema-dependent, and have an alias: FUNCTION
+-- macros are schema-dependent, and have an alias: FUNCTION
 CREATE FUNCTION main.myavg(x) AS SUM(x) / COUNT(x);
 -- create a macro with default constant parameters
 CREATE MACRO add_default(a, b=5) AS a + b;
@@ -41,7 +41,7 @@ SELECT add(1, 2);
 -- 3
 ```
 
-Macro's can have default parameters.
+macros can have default parameters.
 ```sql
 -- b is a default parameter
 CREATE MACRO add_default(a, b=5) AS a + b;
@@ -60,7 +60,7 @@ SELECT triple_add(40, c=1, b=1);
 -- 42
 ```
 
-When macro's are used, they are expanded (i.e. replaced with the original expression), and the parameters within the expanded expression are replaced with the supplied arguments. Step by step:
+When macros are used, they are expanded (i.e. replaced with the original expression), and the parameters within the expanded expression are replaced with the supplied arguments. Step by step:
 ```sql
 -- the 'add' macro we defined above is used in a query
 SELECT add(40, 2);
