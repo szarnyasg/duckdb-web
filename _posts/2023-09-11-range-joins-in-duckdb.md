@@ -337,7 +337,7 @@ the ordering field value will be the probe value, not the build value.
 For a natural join, this is not an issue because all the conditions are equalities,
 but for AsOf, one side has to be chosen.
 Since AsOf can be viewed as a lookup function, 
-it is more natural to return the "function arguments" than the function internals.
+it is more natural to return the "function arguments" than the "function internals".
 
 ### Under the Hood
 
@@ -391,7 +391,7 @@ the AsOf join has the most consistent behaviour of all the algorithms.
 
 ### Window as State Table
 
-The first benchmark compares a hash join with a state table.
+The first benchmark compares AsOf with hash joins and inequality joins.
 It probes a 5M row table of values
 built from 100K timestamps and 50 partitioning keys
 using a self-join where only 50% of the keys are present
@@ -463,7 +463,7 @@ Running the benchmark, we get results like this:
 | :-------- | ----------: |
 | AsOf | 0.425 |
 | IEJoin | 3.522 |
-| State Join | 192.460 |
+| Hash Join | 192.460 |
 
 The runtime improvement of AsOf over IEJoin here is about 9x.
 The horrible performance of the Hash Join is caused by the long (100K) bucket chains in the hash table.
@@ -503,7 +503,7 @@ FROM probe p INNER JOIN state s
 
 | Algorithm | Median of 5 |
 | :-------- | ----------: |
-| State Join | 0.065 | 
+| Hash Join | 0.065 |
 | AsOf | 0.077 |
 | IEJoin | 49.508 |
 
@@ -633,7 +633,7 @@ there are a couple of planning optimisations that could be applied here.
 * When there are selective equality conditions, it is likely that a hash join with filtering against a materialised state table would be significantly faster. If we can detect this and suitable sentinel values are available, the planner could choose to use a hash join instead of the default AsOf implementation.
 * There are also use cases where the probe table is much smaller than the build table, along with equality conditions, and performing a hash join against the *probe* table could yield significant performance improvements.
 
-Nevertheless, remember that one of the advantages of SQL is that it is a declarative language:  
+Nevertheless, remember that one of the advantages of SQL is that it is a declarative language:
 You specify *what* you want and leave it up to the database to figure out *how*.
 Now that we have defined the semantics of the AsOf join, 
 you the user can write queries saying this is *what* you want – and we are free to keep improving the *how*!   
