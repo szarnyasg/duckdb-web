@@ -71,3 +71,7 @@ print(results)
 ## Original Julia Connector
 
 Credits to kimmolinna for the [original DuckDB Julia connector](https://github.com/kimmolinna/DuckDB.jl).
+
+## GitHub Repository
+
+[<span class="github">GitHub</span>](https://github.com/duckdb/DuckDB.jl)
