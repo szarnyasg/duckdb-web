@@ -85,6 +85,8 @@ FROM (
         THEN surround_with_backticks(upper(value))
         WHEN name='temp_directory'
         THEN '`⟨database_name⟩.tmp` or `.tmp` (in in-memory mode)'
+        WHEN name='access_mode'
+        THEN surround_with_backticks(upper(value))
         ELSE surround_with_backticks(value) END) AS default_value,
         scope
     FROM duckdb_settings()
