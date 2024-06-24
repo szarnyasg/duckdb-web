@@ -73,6 +73,7 @@ Some of this style guide is automated with GitHub Actions, but feel free to run 
 * Narrow tables – that do not span horizontally across the entire page – should be prepended with an empty div that has the `narrow_table` class: `<div class="narrow_table"></div>`.
 * Do not introduce hard line breaks if possible. Therefore, avoid using the `<br/>` HTML tag and avoid [double spaces at the end of a line in Markdown](https://spec.commonmark.org/0.28/#hard-line-breaks).
 * For unordered lists, use `*`. If the list has multiple levels, use **4 spaces** for indentation.
+* Smart quotes are turned off in the Markdown formatter used to build the site. If you would like to add [quotation marks](https://en.wikipedia.org/wiki/Quotation_mark), insert them manually from `“ ”` and `‘ ’`.
 
 > [!TIP]
 > In VS Code, you can configure the [Markdown All in One extension](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one) to use asterisk as the default marker when generating a table of content for a page using the following setting in `settings.json`:
