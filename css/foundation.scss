@@ -770,6 +770,9 @@ body.foundation{
 		-ms-grid-columns: (1fr)[3];
 		grid-template-columns: repeat(3, 1fr);
 	}
+	body.foundation section.supporters .supporterboard > ul li {
+		height: 100px;
+	}
 }
 
 @media only screen and (max-width: 840px) {
