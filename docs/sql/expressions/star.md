@@ -82,18 +82,18 @@ FROM tbl;
 
 The `*` expression can be modified using the `EXCLUDE` and `REPLACE`.
 
-### `EXCLUDE` Clause
+### `EXCLUDE` Modifier
 
-`EXCLUDE` allows us to exclude specific columns from the `*` expression.
+The `EXCLUDE` modifier allows us to exclude specific columns from the `*` expression.
 
 ```sql
 SELECT * EXCLUDE (col)
 FROM tbl;
 ```
 
-### `REPLACE` Clause
+### `REPLACE` Modifier
 
-`REPLACE` allows us to replace specific values in columns as specified by an expression.
+The `REPLACE` modifier allows us to replace specific values in columns as specified by an expression.
 
 ```sql
 SELECT * REPLACE (col / 1_000 AS col)

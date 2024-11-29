@@ -330,7 +330,7 @@ CREATE TABLE distances_long AS
 However, we have almost 400 stations, so spelling out their names would be quite tedious.
 Fortunately, DuckDB has a trick to help with this:
 the [`COLUMNS(*)` expression]({% link docs/sql/expressions/star.md %}#columns-expression) lists all columns
-and its optional `EXCLUDE` clause can remove given column names from the list.
+and its optional `EXCLUDE` modifier can remove given column names from the list.
 Therefore, the expression `COLUMNS(* EXCLUDE station)` lists all column names except `station`, precisely what we need for the `UNPIVOT` command:
 
 ```sql

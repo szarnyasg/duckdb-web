@@ -320,7 +320,7 @@ Nijmegen,Gelderland,179073,57.63
 
 In DuckDB, we can use a [`POSITIONAL JOIN`]({% link docs/sql/query_syntax/from.md %}#positional-joins).
 This join type is one of DuckDB's [SQL extensions]({% link docs/sql/dialect/friendly_sql.md %}) and it provides a concise syntax to combine tables row-by-row based on each row's position in the table.
-Joining the two tables together using `POSITIONAL JOIN` results in two `city` columns – we use the [`EXCLUDE` clause]({% link docs/sql/expressions/star.md %}#exclude-clause) to remove the duplicate column:
+Joining the two tables together using `POSITIONAL JOIN` results in two `city` columns – we use the [`EXCLUDE` modifier]({% link docs/sql/expressions/star.md %}#exclude-modifier) to remove the duplicate column:
 
 ```plsql
 COPY (

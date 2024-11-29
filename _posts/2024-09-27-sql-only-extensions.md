@@ -75,8 +75,8 @@ To achieve this level of flexibility, the `pivot_table` extension uses many frie
     * [`list_aggregate`]({% link docs/sql/functions/list.md %}#list_aggregatelist-name) to sum multiple columns and identify subtotal and grand total rows
 * [Bracket notation for string slicing]({% link docs/sql/functions/char.md %}#stringbeginend)
 * [`UNION ALL BY NAME`]({% link docs/sql/query_syntax/setops.md %}#union-all-by-name) to stack data by column name for subtotals and grand totals
-* [`SELECT * REPLACE`]({% link docs/sql/expressions/star.md %}#replace-clause) to dynamically clean up subtotal columns
-* [`SELECT * EXCLUDE`]({% link docs/sql/expressions/star.md %}#exclude-clause) to remove internally generated columns from the final result
+* [`SELECT * REPLACE`]({% link docs/sql/expressions/star.md %}#replace-modifier) to dynamically clean up subtotal columns
+* [`SELECT * EXCLUDE`]({% link docs/sql/expressions/star.md %}#exclude-modifier) to remove internally generated columns from the final result
 * [`GROUPING SETS` and `ROLLUP`]({% link docs/sql/query_syntax/grouping_sets.md %}) to generate subtotals and grand totals
 * [`UNNEST`]({% link docs/sql/query_syntax/unnest.md %}) to convert lists into separate rows for `values_axis := 'rows'`
 * [`MACRO`s]({% link docs/sql/statements/create_macro.md %}) to modularize the code

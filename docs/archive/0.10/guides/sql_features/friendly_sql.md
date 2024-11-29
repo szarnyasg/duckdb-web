@@ -17,8 +17,8 @@ DuckDB offers several advanced SQL features as well as extensions to the SQL syn
 * [`INSERT INTO ... BY NAME`](../../sql/statements/insert#insert-into--by-name)
 * [`ORDER BY ALL`](../../sql/query_syntax/orderby#order-by-all)
 * [`PIVOT`](../../sql/statements/pivot) [`UNPIVOT`](../../sql/statements/unpivot)
-* [`SELECT * EXCLUDE`](../../sql/expressions/star#exclude-clause)
-* [`SELECT * REPLACE`](../../sql/expressions/star#replace-clause)
+* [`SELECT * EXCLUDE`](../../sql/expressions/star#exclude-modifier)
+* [`SELECT * REPLACE`](../../sql/expressions/star#replace-modifier)
 * [`SUMMARIZE`](../meta/summarize)
 * [`UNION BY NAME`](../../sql/query_syntax/setops#union-all-by-name)
 
