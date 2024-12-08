@@ -23,7 +23,7 @@ A string encoding a bitstring can be cast to a `BITSTRING`:
 SELECT '101010'::BITSTRING AS b;
 ```
 
-<div class="narrow_table monospace_table"></div>
+<div class="monospace_table"></div>
 
 |   b    |
 |--------|
@@ -45,7 +45,7 @@ Numeric values (integer and float values) can also be converted to a `BITSTRING`
 SELECT 123::BITSTRING AS b;
 ```
 
-<div class="narrow_table monospace_table"></div>
+<div class="monospace_table"></div>
 
 |                b                 |
 |----------------------------------|
