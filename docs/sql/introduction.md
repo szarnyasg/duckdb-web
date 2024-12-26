@@ -24,11 +24,11 @@ You can create a new table by specifying the table name, along with all column n
 
 ```sql
 CREATE TABLE weather (
-    city    VARCHAR,
+    city VARCHAR,
     temp_lo INTEGER, -- minimum temperature on a day
     temp_hi INTEGER, -- maximum temperature on a day
-    prcp    FLOAT,
-    date    DATE
+    prcp FLOAT,
+    date DATE
 );
 ```
 
@@ -38,7 +38,7 @@ White space (i.e., spaces, tabs, and newlines) can be used freely in SQL command
 
 In the SQL command, we first specify the type of command that we want to perform: `CREATE TABLE`. After that follows the parameters for the command. First, the table name, `weather`, is given. Then the column names and column types follow.
 
-`city VARCHAR` specifies that the table has a column called `city` that is of type `VARCHAR`. `VARCHAR` specifies a data type that can store text of arbitrary length. The temperature fields are stored in an `INTEGER` type, a type that stores integer numbers (i.e., whole numbers without a decimal point). `FLOAT`  columns store single precision floating-point numbers (i.e., numbers with a decimal point). `DATE` stores a date (i.e., year, month, day combination). `DATE` only stores the specific day, not a time associated with that day.
+`city VARCHAR` specifies that the table has a column called `city` that is of type `VARCHAR`. `VARCHAR` specifies a data type that can store text of arbitrary length. The temperature fields are stored in an `INTEGER` type, a type that stores integer numbers (i.e., whole numbers without a decimal point). `FLOAT` columns store single precision floating-point numbers (i.e., numbers with a decimal point). `DATE` stores a date (i.e., year, month, day combination). `DATE` only stores the specific day, not a time associated with that day.
 
 DuckDB supports the standard SQL types `INTEGER`, `SMALLINT`, `FLOAT`, `DOUBLE`, `DECIMAL`, `CHAR(n)`, `VARCHAR(n)`, `DATE`, `TIME` and `TIMESTAMP`.
 
@@ -47,8 +47,8 @@ The second example will store cities and their associated geographical location:
 ```sql
 CREATE TABLE cities (
     name VARCHAR,
-    lat  DECIMAL,
-    lon  DECIMAL
+    lat DECIMAL,
+    lon DECIMAL
 );
 ```
 
@@ -237,8 +237,9 @@ WHERE city = name;
 Since the columns all had different names, the parser automatically found which table they belong to. If there were duplicate column names in the two tables you'd need to qualify the column names to show which one you meant, as in:
 
 ```sql
-SELECT weather.city, weather.temp_lo, weather.temp_hi,
-       weather.prcp, weather.date, cities.lon, cities.lat
+SELECT
+    weather.city, weather.temp_lo, weather.temp_hi, weather.prcp, weather.date,
+    cities.lon, cities.lat
 FROM weather, cities
 WHERE cities.name = weather.city;
 ```
@@ -291,10 +292,10 @@ If we wanted to know what city (or cities) that reading occurred in, we might tr
 ```sql
 SELECT city
 FROM weather
-WHERE temp_lo = max(temp_lo);     -- WRONG
+WHERE temp_lo = max(temp_lo); -- WRONG
 ```
 
-but this will not work since the aggregate max cannot be used in the `WHERE` clause. (This restriction exists because the `WHERE` clause determines which rows will be included in the aggregate calculation; so obviously it has to be evaluated before aggregate functions are computed.) However, as is often the case the query can be restated to accomplish the desired result, here by using a subquery:
+However, this will not work since the aggregate max cannot be used in the `WHERE` clause. (This restriction exists because the `WHERE` clause determines which rows will be included in the aggregate calculation; so obviously it has to be evaluated before aggregate functions are computed.) However, as is often the case the query can be restated to accomplish the desired result, here by using a subquery:
 
 ```sql
 SELECT city
@@ -317,7 +318,7 @@ GROUP BY city;
 ```
 
 |     city      | max(temp_lo) |
-|---------------|--------------|
+|---------------|-------------:|
 | San Francisco | 46           |
 | Hayward       | 37           |
 
@@ -339,7 +340,7 @@ which gives us the same results for only the cities that have all `temp_lo` valu
 ```sql
 SELECT city, max(temp_lo)
 FROM weather
-WHERE city LIKE 'S%'            -- (1)
+WHERE city LIKE 'S%'
 GROUP BY city
 HAVING max(temp_lo) < 40;
 ```
