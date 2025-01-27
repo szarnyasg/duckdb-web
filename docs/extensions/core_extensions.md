@@ -46,8 +46,6 @@ We summarize the main distributions in the table below.
 | [icu]({% link docs/extensions/icu.md %})                   | yes | yes | yes |     | yes | yes |
 | [json]({% link docs/data/json/overview.md %})              | yes | yes | yes |     | yes | yes |
 | [parquet]({% link docs/data/parquet/overview.md %})        | yes | yes | yes | yes | yes | yes |
-| [tpcds]({% link docs/extensions/tpcds.md %})               |     |     | yes |     |     |     |
-| [tpch]({% link docs/extensions/tpch.md %})                 | yes |     | yes |     |     |     |
 
 The [jemalloc]({% link docs/extensions/jemalloc.md %}) extension's availability is based on the operating system.
 Starting with version 0.10.1, `jemalloc` is a built-in extension on Linux x86_64 (AMD64) distributions, while it will be optionally available on Linux ARM64 distributions and on macOS (via compiling from source).
