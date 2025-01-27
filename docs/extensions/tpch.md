@@ -118,10 +118,10 @@ The following table gives an estimate on the resources required to produce DuckD
 
 | Scale factor | Database size | Data generation time | Generator's memory usage |
 |-------------:|--------------:|---------------------:|-------------------------:|
-|          100 |         26 GB | 17 minutes           |                    71 GB |
-|          300 |         78 GB | 51 minutes           |                   211 GB |
-|         1000 |        265 GB | 2h 53 minutes        |                   647 GB |
-|         3000 |        796 GB | 8h 30 minutes        |                  1799 GB |
+|          100 |         26 GB |              minutes |                       GB |
+|          300 |         78 GB |              minutes |                       GB |
+|        1,000 |        265 GB |              minutes |                       GB |
+|        3,000 |        796 GB |              minutes |                       GB |
 
 The numbers shown above were achieved by running the `dbgen` function in a single step, for example:
 
