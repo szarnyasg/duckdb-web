@@ -1,5 +1,4 @@
 ---
-blurb: The PIVOT statement allows values within a column to be separated into their
   own columns.
 layout: docu
 railroad: statements/pivot.js

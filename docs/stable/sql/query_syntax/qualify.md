@@ -1,5 +1,4 @@
 ---
-blurb: The QUALIFY clause is used to filter the results of WINDOW functions.
 layout: docu
 railroad: query_syntax/qualify.js
 redirect_from:

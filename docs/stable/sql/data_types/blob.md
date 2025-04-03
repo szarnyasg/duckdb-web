@@ -1,5 +1,4 @@
 ---
-blurb: The blob (Binary Large OBject) type represents an arbitrary binary object stored
   in the database system.
 layout: docu
 redirect_from:

@@ -1,5 +1,4 @@
 ---
-blurb: Intervals represent periods of time measured in months, days, microseconds,
   or a combination thereof.
 layout: docu
 redirect_from:

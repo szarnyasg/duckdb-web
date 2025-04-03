@@ -1,5 +1,4 @@
 ---
-blurb: The SELECT clause specifies the list of columns that will be returned by the
   query.
 layout: docu
 railroad: query_syntax/select.js

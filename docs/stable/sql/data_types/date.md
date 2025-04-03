@@ -1,5 +1,4 @@
 ---
-blurb: A date specifies a combination of year, month and day.
 layout: docu
 redirect_from:
 - /docs/sql/data_types/date

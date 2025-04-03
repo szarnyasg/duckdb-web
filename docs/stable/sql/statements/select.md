@@ -1,5 +1,4 @@
 ---
-blurb: The SELECT statement retrieves rows from the database.
 layout: docu
 railroad: statements/select.js
 redirect_from:
