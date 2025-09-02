@@ -1,4 +1,4 @@
-# Find the largest sepals/petals in the Iris data set
+# Find the largest sepals/petals in the Iris dataset
 # using dplyr
 library("duckdb")
 library("dplyr")

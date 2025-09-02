@@ -14,7 +14,7 @@ The Parquet format has a number of properties that make it suitable for analytic
 
 1. The columnar representation means that individual columns can be (efficiently) read. No need to always read the entire file!
 2. The file contains per-column statistics in every row group (min/max value, and the number of `NULL` values). These statistics allow the reader to skip row groups if they are not required.
-3. The columnar compression significantly reduces the file size of the format, which in turn reduces the storage requirement of data sets. This can often turn Big Data into Medium Data.
+3. The columnar compression significantly reduces the file size of the format, which in turn reduces the storage requirement of datasets. This can often turn Big Data into Medium Data.
 
 ## DuckDB and Parquet
 
@@ -160,7 +160,7 @@ For DuckDB it does not really matter how many Parquet files need to be read in a
 
 ## Counting Rows
 
-Now suppose we want to figure out how many rows are in our data set. We can do that using the following code:
+Now suppose we want to figure out how many rows are in our dataset. We can do that using the following code:
 
 ```python
 # DuckDB
@@ -196,7 +196,7 @@ While this is much faster, this still takes more than a second as the entire `ve
 
 ## Filtering Rows
 
-It is common to use some sort of filtering predicate to only look at the interesting parts of a data set. For example, imagine we want to know how many taxi rides occur after the 30th of June 2019. We can do that using the following query in DuckDB:
+It is common to use some sort of filtering predicate to only look at the interesting parts of a dataset. For example, imagine we want to know how many taxi rides occur after the 30th of June 2019. We can do that using the following query in DuckDB:
 
 ```python
 con.execute("""

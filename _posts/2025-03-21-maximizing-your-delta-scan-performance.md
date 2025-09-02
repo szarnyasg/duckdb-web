@@ -37,7 +37,7 @@ For other cloud providers such as Azure or Google Cloud, check the [extension’
 
 ## Performance Improvements between `delta` v0.1.0 and 0.3.0
 
-While the first release (v0.1.0) of the `delta` extension already came with various performance-related features such as projection pushdown and constant filter pushdown, the features added since then have massively improved the performance of `delta_scan`. To illustrate this, our first benchmark will use the industry standard [TPC-DS]({% link docs/stable/core_extensions/tpcds.md %}) benchmark with the scale factor 1 data set (SF1).
+While the first release (v0.1.0) of the `delta` extension already came with various performance-related features such as projection pushdown and constant filter pushdown, the features added since then have massively improved the performance of `delta_scan`. To illustrate this, our first benchmark will use the industry standard [TPC-DS]({% link docs/stable/core_extensions/tpcds.md %}) benchmark with the scale factor 1 dataset (SF1).
 
 ### Benchmark Setup
 

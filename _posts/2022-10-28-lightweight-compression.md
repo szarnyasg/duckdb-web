@@ -11,7 +11,7 @@ tags: ["deep dive"]
      width="200"
      />
 
-When working with large amounts of data, compression is critical for reducing storage size and egress costs. Compression algorithms typically reduce data set size by **75-95%**, depending on how compressible the data is. Compression not only reduces the storage footprint of a data set, but also often **improves performance** as less data has to be read from disk or over a network connection.
+When working with large amounts of data, compression is critical for reducing storage size and egress costs. Compression algorithms typically reduce dataset size by **75-95%**, depending on how compressible the data is. Compression not only reduces the storage footprint of a dataset, but also often **improves performance** as less data has to be read from disk or over a network connection.
 
 Column store formats, such as DuckDB's native file format or [Parquet]({% post_url 2021-06-25-querying-parquet %}), benefit especially from compression. That is because data within an individual column is generally very similar, which can be exploited effectively by compression algorithms. Storing data in row-wise format results in interleaving of data of different columns, leading to lower compression rates.
 
@@ -32,22 +32,22 @@ DuckDB added support for compression [at the end of last year](https://github.co
 
 ## Compression Intro
 
-At its core, compression algorithms try to find patterns in a data set in order to store it more cleverly. **Compressibility** of a data set is therefore dependent on whether or not such patterns can be found, and whether they exist in the first place. Data that follows a fixed pattern can be compressed significantly. Data that does not have any patterns, such as random noise, cannot be compressed. Formally, the compressibility of a dataset is known as its [entropy](<https://en.wikipedia.org/wiki/Entropy_(information_theory)>).
+At its core, compression algorithms try to find patterns in a dataset in order to store it more cleverly. **Compressibility** of a dataset is therefore dependent on whether or not such patterns can be found, and whether they exist in the first place. Data that follows a fixed pattern can be compressed significantly. Data that does not have any patterns, such as random noise, cannot be compressed. Formally, the compressibility of a dataset is known as its [entropy](<https://en.wikipedia.org/wiki/Entropy_(information_theory)>).
 
-As an example of this concept, let us consider the following two data sets.
+As an example of this concept, let us consider the following two datasets.
 
 <img src="/images/compression/exampledata.png"
-     alt="Example data set with predictable and noisy data"
+     alt="Example dataset with predictable and noisy data"
      width="100%"
      />
 
-The constant data set can be compressed by simply storing the value of the pattern and how many times the pattern repeats (e.g., `1x8`). The random noise, on the other hand, has no pattern, and is therefore not compressible.
+The constant dataset can be compressed by simply storing the value of the pattern and how many times the pattern repeats (e.g., `1x8`). The random noise, on the other hand, has no pattern, and is therefore not compressible.
 
 ## General Purpose Compression Algorithms
 
 The compression algorithms that most people are familiar with are _general purpose compression algorithms_, such as _zip_, _gzip_ or _zstd_. General purpose compression algorithms work by finding patterns in bits. They are therefore agnostic to data types, and can be used on any stream of bits. They can be used to compress files, but they can also be applied to arbitrary data sent over a socket connection.
 
-General purpose compression is flexible and very easy to set up. There are a number of high quality libraries available (such as zstd, snappy or lz4) that provide compression, and they can be applied to any data set stored in any manner.
+General purpose compression is flexible and very easy to set up. There are a number of high quality libraries available (such as zstd, snappy or lz4) that provide compression, and they can be applied to any dataset stored in any manner.
 
 The downside of general purpose compression is that (de)compression is generally expensive. While this does not matter if we are reading and writing from a hard disk or over a slow internet connection, the speed of (de)compression can become a bottleneck when data is stored in RAM.
 
@@ -65,13 +65,13 @@ This is relevant because the block size is the minimum amount of data that must 
 
 ## Lightweight Compression Algorithms
 
-Another option for achieving compression is to use specialized lightweight compression algorithms. These algorithms also operate by finding patterns in data. However, unlike general purpose compression, they do not attempt to find generic patterns in bitstreams. Instead, they operate by finding **specific patterns** in data sets.
+Another option for achieving compression is to use specialized lightweight compression algorithms. These algorithms also operate by finding patterns in data. However, unlike general purpose compression, they do not attempt to find generic patterns in bitstreams. Instead, they operate by finding **specific patterns** in datasets.
 
 By detecting specific patterns, specialized compression algorithms can be significantly more lightweight, providing much faster compression and decompression. In addition, they can be effective on much smaller data sizes. This allows us to decompress a few rows at a time, rather than requiring large blocks of data to be decompressed at once. These specialized compression algorithms can also offer efficient support for random seeks, making data access through an index significantly faster.
 
 Lightweight compression algorithms also provide us with more fine-grained control over the compression process. This is especially relevant for us as DuckDB's file format uses fixed-size blocks in order to avoid fragmentation for workloads involving deletes and updates. The fine-grained control allows us to fill these blocks more effectively, and avoid having to guess how much compressed data will fit into a buffer.
 
-On the flip side, these algorithms are ineffective if the specific patterns they are designed for do not occur in the data. As a result, individually, these lightweight compression algorithms are no replacement for general purpose algorithms. Instead, multiple specialized algorithms must be combined in order to capture many different common patterns in data sets.
+On the flip side, these algorithms are ineffective if the specific patterns they are designed for do not occur in the data. As a result, individually, these lightweight compression algorithms are no replacement for general purpose algorithms. Instead, multiple specialized algorithms must be combined in order to capture many different common patterns in datasets.
 
 ## Compression Framework
 
@@ -97,7 +97,7 @@ DuckDB implements several lightweight compression algorithms, and we are in the 
 Constant encoding is the most straightforward compression algorithm in DuckDB. Constant encoding is used when every single value in a column segment is the same value. In that case, we store only that single value. This encoding is visualized below.
 
 <img src="/images/compression/constant.png"
-     alt="Data set stored both uncompressed and with constant compression"
+     alt="Dataset stored both uncompressed and with constant compression"
      width="100%"
      />
 
@@ -105,10 +105,10 @@ When applicable, this encoding technique leads to tremendous space savings. Whil
 
 ### Run-Length Encoding (RLE)
 
-[Run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding) (RLE) is a compression algorithm that takes advantage of repeated values in a dataset. Rather than storing individual values, the data set is decomposed into a pair of (value, count) tuples, where the count represents how often the value is repeated. This encoding is visualized below.
+[Run-length encoding](https://en.wikipedia.org/wiki/Run-length_encoding) (RLE) is a compression algorithm that takes advantage of repeated values in a dataset. Rather than storing individual values, the dataset is decomposed into a pair of (value, count) tuples, where the count represents how often the value is repeated. This encoding is visualized below.
 
 <img src="/images/compression/rle.png"
-     alt="Data set stored both uncompressed and with RLE compression"
+     alt="Dataset stored both uncompressed and with RLE compression"
      width="100%"
      />
 
@@ -119,7 +119,7 @@ RLE is powerful when there are many repeating values in the data. This might occ
 Bit Packing is a compression technique that takes advantage of the fact that integral values rarely span the full range of their data type. For example, four-byte integer values can store values from negative two billion to positive two billion. Frequently the full range of this data type is not used, and instead only small numbers are stored. Bit packing takes advantage of this by removing all of the unnecessary leading zeros when storing values. An example (in decimal) is provided below.
 
 <img src="/images/compression/bitpacking.png"
-     alt="Data set stored both uncompressed and with bitpacking compression"
+     alt="Dataset stored both uncompressed and with bitpacking compression"
      width="100%"
      />
 
@@ -132,7 +132,7 @@ Bit packing is very powerful in practice. It is also convenient to users – as 
 Frame of Reference encoding is an extension of bit packing, where we also include a frame. The frame is the minimum value found in the set of values. The values are stored as the offset from this frame. An example of this is given below.
 
 <img src="/images/compression/for.png"
-     alt="Data set stored both uncompressed and with FOR compression"
+     alt="Dataset stored both uncompressed and with FOR compression"
      width="100%"
      />
 
@@ -143,7 +143,7 @@ While this might not seem particularly useful at a first glance, it is very powe
 Dictionary encoding works by extracting common values into a separate dictionary, and then replacing the original values with references to said dictionary. An example is provided below.
 
 <img src="/images/compression/dictionary.png"
-     alt="Data set stored both uncompressed and with Dictionary compression"
+     alt="Dataset stored both uncompressed and with Dictionary compression"
      width="100%"
      />
 
@@ -154,7 +154,7 @@ Dictionary encoding is particularly efficient when storing text columns with man
 [Fast Static Symbol Table](https://www.vldb.org/pvldb/vol13/p2649-boncz.pdf) compression is an extension to dictionary compression, that not only extracts repetitions of entire strings, but also extracts repetitions _within_ strings. This is effective when storing strings that are themselves unique, but have a lot of repetition within the strings, such as URLs or e-mail addresses. An image illustrating how this works is shown below.
 
 <img src="/images/compression/fsst.png"
-     alt="Data set stored both uncompressed and with FSST compression"
+     alt="Dataset stored both uncompressed and with FSST compression"
      width="100%"
      />
 

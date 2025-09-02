@@ -25,7 +25,7 @@ As we are working towards stabilizing the storage format and moving towards vers
 
 **Optimistic writing to disk.** In previous DuckDB versions, the data of a single transaction was first loaded into memory, and would only be written to disk on a commit. While this works fine when data is loaded in batches that fit in memory, it does not work well when loading a lot of data in a single transaction, such as when ingesting one very large file into the system.
 
-This version introduces [optimistic writing to disk](https://github.com/duckdb/duckdb/pull/4996). When loading large data sets in a single transaction, data is compressed and streamed to the database file, even before the `COMMIT` has occurred. When the transaction is committed, the data will already have been written to disk, and no further writing has to happen. On a rollback, any optimistically written data is reclaimed by the system.
+This version introduces [optimistic writing to disk](https://github.com/duckdb/duckdb/pull/4996). When loading large datasets in a single transaction, data is compressed and streamed to the database file, even before the `COMMIT` has occurred. When the transaction is committed, the data will already have been written to disk, and no further writing has to happen. On a rollback, any optimistically written data is reclaimed by the system.
 
 **Parallel data loading**. In addition to optimistically writing data to disk, this release includes support for parallel data loading into individual tables. This greatly improves performance of data loading on machines that have multiple cores (i.e., all modern machines).
 
@@ -184,7 +184,7 @@ Nested types and structures are very efficiently implemented in DuckDB, and are 
 
 ## Memory Management Improvements
 
-When working with large data sets, memory management is always a potential pain point. By using a streaming execution engine and buffer manager, DuckDB supports many operations on larger than memory data sets. DuckDB also aims to support queries where *intermediate* results do not fit into memory by using disk-spilling techniques, and has support for an [efficient out-of-core sort]({% post_url 2021-08-27-external-sorting %}), [out-of-core window functions]({% post_url 2021-10-13-windowing %}) and [an out-of-core hash join](https://github.com/duckdb/duckdb/pull/4189).
+When working with large datasets, memory management is always a potential pain point. By using a streaming execution engine and buffer manager, DuckDB supports many operations on larger than memory datasets. DuckDB also aims to support queries where *intermediate* results do not fit into memory by using disk-spilling techniques, and has support for an [efficient out-of-core sort]({% post_url 2021-08-27-external-sorting %}), [out-of-core window functions]({% post_url 2021-10-13-windowing %}) and [an out-of-core hash join](https://github.com/duckdb/duckdb/pull/4189).
 
 This release further improves on that by greatly optimizing the [out-of-core hash join](https://github.com/duckdb/duckdb/pull/4970), resulting in a much more graceful degradation in performance as the data exceeds the memory limit.
 

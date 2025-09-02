@@ -193,7 +193,7 @@ Analytical systems such as DuckDB – in principle – have less of an imperativ
 
 **Concurrent Ingestion and Reporting.** As change is continuous, we often have data ingestion streams adding new data to a database system. In analytical systems, it is common to have a single connection append new data to a database, while other connections read from the database in order to e.g., generate graphs and reports. If these connections are isolated, then the generated graphs and aggregates will always be executed over a complete and consistent snapshot of the database, ensuring that the generated graphs and aggregates are correct.
 
-**Rolling Back Incorrect Transformations.** When analyzing data, a common pattern is loading data from data sets stored in flat files followed by performing a number of transformations on that data. For example, we might load a data set from a CSV file, followed by cleaning up `NULL` values and then deleting incomplete rows. If we make an incorrect transformation, it is possible we accidentally delete too many rows.
+**Rolling Back Incorrect Transformations.** When analyzing data, a common pattern is loading data from datasets stored in flat files followed by performing a number of transformations on that data. For example, we might load a dataset from a CSV file, followed by cleaning up `NULL` values and then deleting incomplete rows. If we make an incorrect transformation, it is possible we accidentally delete too many rows.
 
 This is not the end of the world, as we can recover by re-reading from the original CSV files. However, we can save ourselves a lot of time by wrapping the transformations in a transaction and rolling back when something goes wrong. For example:
 

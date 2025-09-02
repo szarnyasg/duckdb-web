@@ -278,7 +278,7 @@ Compatibility is also guaranteed between different DuckDB clients (e.g., Python 
 See the documentation on [handling concurrency]({% link docs/stable/connect/concurrency.md %}#handling-concurrency)
 and the section on [“Writing to DuckDB from Multiple Processes”]({% link docs/stable/connect/concurrency.md %}#writing-to-duckdb-from-multiple-processes).
 
-To work on the same data set with multiple DuckDB clients, consider using the [DuckLake format](http://ducklake.select/) through the [`ducklake` extension]({% link docs/stable/core_extensions/ducklake.md %}).
+To work on the same dataset with multiple DuckDB clients, consider using the [DuckLake format](http://ducklake.select/) through the [`ducklake` extension]({% link docs/stable/core_extensions/ducklake.md %}).
 </div>
 
 </div>
@@ -391,7 +391,7 @@ Finally, please report the DuckDB version (for stable version, the version numbe
 DuckDB was designed with both data science and data engineering workloads in mind.
 Therefore, you can use DuckDB's SQL syntax to be highly flexible, or very precise, depending on your needs.
 
-For data science users, who often run queries in an interactive fashion, DuckDB offers several mechanisms for quickly exploring data sets.
+For data science users, who often run queries in an interactive fashion, DuckDB offers several mechanisms for quickly exploring datasets.
 For example, CSV files can be loaded by [auto-inferring their schema]({% link docs/stable/data/csv/auto_detection.md %}) using `CREATE TABLE tbl AS FROM 'input.csv'`.
 Moreover, there numerous SQL shorthands known as [“friendly SQL”]({% link docs/stable/sql/dialect/friendly_sql.md %}) for more concise expressions, e.g., the [`GROUP BY ALL` clause]({% link docs/stable/sql/query_syntax/groupby.md %}#group-by-all).
 

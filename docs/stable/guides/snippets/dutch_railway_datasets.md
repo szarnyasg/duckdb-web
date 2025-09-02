@@ -46,7 +46,7 @@ DESCRIBE services;
 
 ## Datasets
 
-## Yearly Data Sets
+## Yearly Datasets
 
 * [2019](https://blobs.duckdb.org/nl-railway/services-2019.csv.gz) (347 MB)
 * [2020](https://blobs.duckdb.org/nl-railway/services-2020.csv.gz) (355 MB)
@@ -55,7 +55,7 @@ DESCRIBE services;
 * [2023](https://blobs.duckdb.org/nl-railway/services-2023.csv.gz) (346 MB)
 * [2024](https://blobs.duckdb.org/nl-railway/services-2024.csv.gz) (357 MB)
 
-## Monthly Data Sets
+## Monthly Datasets
 
 * [2024-01](https://blobs.duckdb.org/nl-railway/services-2024-01.csv.gz) (29 MB)
 * [2024-02](https://blobs.duckdb.org/nl-railway/services-2024-02.csv.gz) (28 MB)

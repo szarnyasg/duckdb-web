@@ -207,7 +207,7 @@ This join query requires two scans of the table, but the only materialised data 
 (which is probably much smaller than the original table), and there is no sorting at all.
 
 This type of query showed up [in a user's blog](https://bwlewis.github.io/duckdb_and_r/last/last.html)
-and we found that the join query was over 20 times faster on their data set:
+and we found that the join query was over 20 times faster on their dataset:
 
 <img src="/images/blog/windowing/last-in-group.jpg" alt="Window takes 13 seconds, Join takes half a second" title="Figure 3: Last in Group Join vs Window Comparison" style="max-width:90%;width:90%;height:auto"/>
 

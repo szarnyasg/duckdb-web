@@ -8,11 +8,11 @@ excerpt: ""
 tags: ["deep dive"]
 ---
 
-Memory is an important resource when processing large amounts of data. Memory is a fast caching layer that can provide immense speed-ups to query processing. However, memory is finite and expensive, and when working with large data sets there is generally not enough memory available to keep all necessary data structures cached. Managing memory effectively is critical for a high-performance query engine – as memory must be utilized in order to provide that high performance, but we must be careful so that we do not use excessive memory which can cause out-of-memory errors or can cause the ominous [OOM killer](https://en.wikipedia.org/wiki/Out_of_memory#Recovery) to zap the process out of existence.
+Memory is an important resource when processing large amounts of data. Memory is a fast caching layer that can provide immense speed-ups to query processing. However, memory is finite and expensive, and when working with large datasets there is generally not enough memory available to keep all necessary data structures cached. Managing memory effectively is critical for a high-performance query engine – as memory must be utilized in order to provide that high performance, but we must be careful so that we do not use excessive memory which can cause out-of-memory errors or can cause the ominous [OOM killer](https://en.wikipedia.org/wiki/Out_of_memory#Recovery) to zap the process out of existence.
 
 DuckDB is built to effectively utilize available memory while avoiding running out of memory:
 
-* The streaming execution engine allows small chunks of data to flow through the system without requiring entire data sets to be materialized in memory.
+* The streaming execution engine allows small chunks of data to flow through the system without requiring entire datasets to be materialized in memory.
 * Data from intermediates can be spilled to disk temporarily in order to free up space in memory, allowing computation of complex queries that would otherwise exceed the available memory.
 * The buffer manager caches as many pages as possible from any attached databases without exceeding the pre-defined memory limits.
 

@@ -4,7 +4,7 @@ title: "Analyzing Open Government Data with duckplyr"
 author: "Hannes Mühleisen"
 thumb: "/images/blog/thumbs/duckplyr.svg"
 image: "/images/blog/thumbs/duckplyr.png"
-excerpt: "We use the duckplyr R library to clean and analyze an Open Data set published by the government of New Zealand."
+excerpt: "We use the duckplyr R library to clean and analyze an Open Dataset published by the government of New Zealand."
 tags: ["using DuckDB"]
 ---
 
@@ -157,7 +157,7 @@ SELECT
     TRY_CAST(data.count AS INTEGER) AS count_
 ```
 
-The data set contains various totals, so we remove them before proceeding:
+The dataset contains various totals, so we remove them before proceeding:
 
 ```sql
 WHERE count_ > 0

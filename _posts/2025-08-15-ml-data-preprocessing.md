@@ -242,7 +242,7 @@ ORDER BY trx_type_le;
 
 One other common data preprocessing step in machine learning is to scale numerical features, such that the values of different features are brought to a similar range or distribution. _Scaling,_ also known as _feature normalization_ or _standardization,_ involves transforming features so they have comparable magnitudes; typically by rescaling them to a fixed range (like 0 to 1) or adjusting them to have zero mean and unit variance. This process is required because many algorithms rely on distance calculations or gradient updates, which can be skewed if features vary widely in scale.
 
-If encoding is performed on the initial raw data (due to the need of knowing the entire categorical values list), scaling requires to split the data into training and testing data sets, in order to avoid [data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage). In DuckDB, we can split the data by [sampling]({% link docs/stable/sql/samples.md %}) it:
+If encoding is performed on the initial raw data (due to the need of knowing the entire categorical values list), scaling requires to split the data into training and testing datasets, in order to avoid [data leakage](https://scikit-learn.org/stable/common_pitfalls.html#data-leakage). In DuckDB, we can split the data by [sampling]({% link docs/stable/sql/samples.md %}) it:
 
 ```sql
 SET threads = 1;
@@ -467,7 +467,7 @@ The code is available [in our blog examples repository](https://github.com/duckd
 In `scikit-learn`, data preprocessing is done through transformers and pipelines.
 A transformer is a class that implements the `fit` and `transform` methods, while a pipeline is a sequence of transformers that are applied to the data in a specific order.
 Unless specified otherwise, each step of the pipeline returns, in numpy arrays, only the result of the transformation step.
-Because in DuckDB we transform the data through SQL expressions, we can inspect the full data set after each step.
+Because in DuckDB we transform the data through SQL expressions, we can inspect the full dataset after each step.
 Therefore, in our benchmark, the `scikit-learn` data preprocessing steps include the following transformations:
 
 - the [output of the transformation step](https://scikit-learn.org/stable/auto_examples/miscellaneous/plot_set_output.html) is set to `pandas`;

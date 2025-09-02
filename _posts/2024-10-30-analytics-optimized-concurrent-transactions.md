@@ -127,7 +127,7 @@ For the **100 column case**, results look drastically different:
 | HyPer       | 0.66 | 6.06 | 61.54 |
 | PostgreSQL  | 1.42 | 5.45 | 50.05 |
 
-Recall that here we are changing a single column out of 100, a common use case in wrangling analytical data sets. Because DuckDB's MVCC scheme is *designed* for those use cases, it shows exactly the same runtime as in the single-column experiment above. In SQLite, there is a clear impact of the larger row size on the time taken to complete the updates even without MVCC. HyPer and PostgreSQL also show much larger, up to 100× (!) slowdowns as the amount of changed rows is increased.
+Recall that here we are changing a single column out of 100, a common use case in wrangling analytical datasets. Because DuckDB's MVCC scheme is *designed* for those use cases, it shows exactly the same runtime as in the single-column experiment above. In SQLite, there is a clear impact of the larger row size on the time taken to complete the updates even without MVCC. HyPer and PostgreSQL also show much larger, up to 100× (!) slowdowns as the amount of changed rows is increased.
 
 This neatly brings us to checkpointing.
 

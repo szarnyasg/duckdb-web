@@ -8,7 +8,7 @@ redirect_from:
 - /docs/stable/extensions/httpfs/hugging_face/
 ---
 
-The `httpfs` extension introduces support for the `hf://` protocol to access data sets hosted in [Hugging Face](https://huggingface.co/) repositories.
+The `httpfs` extension introduces support for the `hf://` protocol to access datasets hosted in [Hugging Face](https://huggingface.co/) repositories.
 See the [announcement blog post]({% post_url 2024-05-29-access-150k-plus-datasets-from-hugging-face-with-duckdb %}) for details.
 
 ## Usage

@@ -470,11 +470,11 @@ You may have noticed that we are using very clean datasets. This is of course ve
 * Add thousand separating commas, e.g., turning `905234` to `905,234`.
 * Change the CSV's separator to the semicolon character (`;`).
 
-And while we're at it, also fetch the data set via HTTPS this time, using the URL [`https://duckdb.org/data/cli/pop.csv`](https://duckdb.org/data/cli/pop.csv).
+And while we're at it, also fetch the dataset via HTTPS this time, using the URL [`https://duckdb.org/data/cli/pop.csv`](https://duckdb.org/data/cli/pop.csv).
 
 #### Unix Shell: `curl` and `sed`
 
-In Unix, remote data sets are typically fetched via [`curl`](https://man7.org/linux/man-pages/man1/curl.1.html).
+In Unix, remote datasets are typically fetched via [`curl`](https://man7.org/linux/man-pages/man1/curl.1.html).
 The output of `curl` is piped into the subsequent processing steps, in this case, a bunch of [`sed`](https://man7.org/linux/man-pages/man1/sed.1.html) commands.
 
 ```bash

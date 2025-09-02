@@ -24,7 +24,7 @@ We summarize the key findings of the survey below:
 
 * Users run DuckDB most often on laptops but servers are also very popular.
 * The most popular clients are the Python API and the standalone CLI client.
-* Most users don't have huge data sets but they appreciate high performance very much.
+* Most users don't have huge datasets but they appreciate high performance very much.
 * Users would like to see performance optimizations related to time series and partitioned data.
 * DuckDB is popular among data engineers, analysts and scientists, and also among software engineers.
 

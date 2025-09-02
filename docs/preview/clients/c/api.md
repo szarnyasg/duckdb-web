@@ -1782,7 +1782,7 @@ The result must NOT be freed.
 
 ##### Return Value
 
-The duckdb_blob value at the specified location. Returns a blob with blob.data set to nullptr if the
+The duckdb_blob value at the specified location. Returns a blob with blob.dataset to nullptr if the
 value cannot be converted. The resulting field "blob.data" must be freed with `duckdb_free.`
 
 ##### Syntax
@@ -7070,7 +7070,7 @@ The extra info
 
 #### `duckdb_init_get_bind_data`
 
-Gets the bind data set by `duckdb_bind_set_bind_data` during the bind.
+Gets the bind dataset by `duckdb_bind_set_bind_data` during the bind.
 
 Note that the bind data should be considered as read-only.
 For tracking state, use the init data instead.
@@ -7222,7 +7222,7 @@ The extra info
 
 #### `duckdb_function_get_bind_data`
 
-Gets the bind data set by `duckdb_bind_set_bind_data` during the bind.
+Gets the bind dataset by `duckdb_bind_set_bind_data` during the bind.
 
 Note that the bind data should be considered as read-only.
 For tracking state, use the init data instead.
@@ -7246,7 +7246,7 @@ The bind data object
 
 #### `duckdb_function_get_init_data`
 
-Gets the init data set by `duckdb_init_set_init_data` during the init.
+Gets the init dataset by `duckdb_init_set_init_data` during the init.
 
 ##### Syntax
 
@@ -7267,7 +7267,7 @@ The init data object
 
 #### `duckdb_function_get_local_init_data`
 
-Gets the thread-local init data set by `duckdb_init_set_init_data` during the local_init.
+Gets the thread-local init dataset by `duckdb_init_set_init_data` during the local_init.
 
 ##### Syntax
 

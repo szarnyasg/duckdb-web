@@ -4,7 +4,7 @@ title: "DuckDB Tricks – Part 1"
 author: "Gabor Szarnyas"
 thumb: "/images/blog/thumbs/duckdb-tricks.svg"
 image: "/images/blog/thumbs/duckdb-tricks.png"
-excerpt: "We use a simple example data set to present a few tricks that are useful when using DuckDB."
+excerpt: "We use a simple example dataset to present a few tricks that are useful when using DuckDB."
 tags: ["using DuckDB"]
 ---
 
@@ -19,9 +19,9 @@ The operations are summarized in the following table:
 | [Specifying types when reading CSVs](#specifying-types-in-the-csv-loader) | `FROM read_csv('example.csv', types = {'x': 'DECIMAL(15, 3)'})`{:.language-sql .highlight} |
 | [Updating CSV files in-place](#updating-csv-files-in-place) | `COPY (SELECT s FROM 'example.csv') TO 'example.csv'`{:.language-sql .highlight} |
 
-## Creating the Example Data Set
+## Creating the Example Dataset
 
-We start by creating a data set that we'll use in the rest of the blog post. To this end, we define a table, populate it with some data and export it to a CSV file.
+We start by creating a dataset that we'll use in the rest of the blog post. To this end, we define a table, populate it with some data and export it to a CSV file.
 
 ```sql
 CREATE TABLE example (s STRING, x DOUBLE);

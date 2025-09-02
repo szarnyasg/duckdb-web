@@ -14,7 +14,7 @@ In 2022, the data provider has decided to distribute the dataset as a series of 
 
 In the [“Billion Taxi Rides in Redshift”](https://tech.marksblogg.com/billion-nyc-taxi-rides-redshift.html) blog post, a new database benchmark is proposed to evaluate the performance of aggregations over the taxi dataset. The dataset is also joined and denormalized with other datasets that contain information about the weather, cab types, and pickup/dropoff locations. It is then stored as multiple compressed, gzipped CSV files, each containing 20 million rows.
 
-## The Taxi Data Set as CSV Files
+## The Taxi Dataset as CSV Files
 
 Since DuckDB is well-known for its [CSV reader performance](https://x.com/jmduke/status/1820593783005667459), we were intrigued to explore whether the loading process of this benchmark could help us identify new performance bottlenecks in our CSV loader. This curiosity led us on a journey to generate these datasets and analyze their performance in DuckDB. According to the recent study conducted on the AWS RedShift fleet, [CSV files are the most used external source data type in S3](https://assets.amazon.science/24/3b/04b31ef64c83acf98fe3fdca9107/why-tpc-is-not-enough-an-analysis-of-the-amazon-redshift-fleet.pdf), and 99% of them are gzipped. Therefore, the fact that the proposed benchmark also used split gzipped files caught my attention.
 

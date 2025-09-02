@@ -55,9 +55,9 @@ Not only is this process painless, it is highly efficient. For many queries, you
 
 To demonstrate the performance of DuckDB when executing SQL on Pandas DataFrames, we now present a number of benchmarks. The source code for the benchmarks is available for interactive use [in Google Colab](https://colab.research.google.com/drive/1eg_TJpPQr2tyYKWjISJlX8IEAi8Qln3U?usp=sharing). In these benchmarks, we operate *purely* on Pandas DataFrames. Both the DuckDB code and the Pandas code operates fully on a `Pandas-in, Pandas-out` basis.
 
-### Benchmark Setup and Data Set
+### Benchmark Setup and Dataset
 
-We run the benchmark entirely from within the Google Colab environment. For our benchmark dataset, we use the [infamous TPC-H data set](http://www.tpc.org/tpch/). Specifically, we focus on the `lineitem` and `orders` tables as these are the largest tables in the benchmark. The total dataset size is around 1 GB in uncompressed CSV format ("scale factor" 1).
+We run the benchmark entirely from within the Google Colab environment. For our benchmark dataset, we use the [infamous TPC-H dataset](http://www.tpc.org/tpch/). Specifically, we focus on the `lineitem` and `orders` tables as these are the largest tables in the benchmark. The total dataset size is around 1 GB in uncompressed CSV format ("scale factor" 1).
 
 As DuckDB is capable of using multiple processors (multi-threading), we include both a single-threaded variant and a variant with two threads. Note that while DuckDB can scale far beyond two threads, Google Colab only supports two.
 
@@ -343,7 +343,7 @@ In this benchmark we copy a (fairly small) Pandas data frame consisting of 10M 4
 
 While SQLite performs significantly better than Postgres here, it is still rather slow. That is because the `to_sql` function in Pandas runs a large number of `INSERT INTO` statements, which involves transforming all the individual values of the Pandas DataFrame into a row-wise representation of  Python objects which are then passed onto the system. DuckDB on the other hand directly reads the underlying array from Pandas, which makes this operation almost instant.
 
-Transferring query results or tables back from the SQL system into Pandas is another potential bottleneck. Using the built-in `read_sql_query` is extremely slow, but even the more optimized CSV route still takes at least a second for this tiny data set. DuckDB, on the other hand, also performs this transformation almost instantaneously.
+Transferring query results or tables back from the SQL system into Pandas is another potential bottleneck. Using the built-in `read_sql_query` is extremely slow, but even the more optimized CSV route still takes at least a second for this tiny dataset. DuckDB, on the other hand, also performs this transformation almost instantaneously.
 
 |                     Name                      | Time (s) |
 |:-----------------------------------------------|----------:|
@@ -356,7 +356,7 @@ Transferring query results or tables back from the SQL system into Pandas is ano
 
 There is a package called [PandaSQL](https://pypi.org/project/pandasql/) that also provides the facilities of running SQL directly on top of Pandas. However, it is built using the to_sql and from_sql infrastructure that we have seen is extremely slow in Appendix A.
 
-Nevertheless, for good measure we have run the first Ungrouped Aggregate query in PandaSQL to time it. When we first tried to run the query on the original dataset, however, we ran into an out-of-memory error that crashed our colab session. For that reason, we have decided to run the benchmark again for PandaSQL using a sample of 10% of the original data set size (600K rows). Here are the results:
+Nevertheless, for good measure we have run the first Ungrouped Aggregate query in PandaSQL to time it. When we first tried to run the query on the original dataset, however, we ran into an out-of-memory error that crashed our colab session. For that reason, we have decided to run the benchmark again for PandaSQL using a sample of 10% of the original dataset size (600K rows). Here are the results:
 
 |    Name     | Time (s)  |
 |:-------------|-----------:|

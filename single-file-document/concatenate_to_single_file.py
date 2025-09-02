@@ -124,7 +124,7 @@ def adjust_links_in_doc_body(doc_body):
     # replace "(`" with "(` " to allow line breaking
     doc_body = doc_body.replace("(`", "(` ")
 
-    # replace links to data sets to point to the website
+    # replace links to datasets to point to the website
     doc_body = doc_body.replace("](/data/", "](https://duckdb.org/data/")
 
     # remove '<div>' HTML tags

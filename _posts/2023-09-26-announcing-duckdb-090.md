@@ -54,11 +54,11 @@ INSERT INTO structs VALUES (ROW(42));
 
 ## Core System Improvements
 
-**[Out-of-Core Hash Aggregates](https://github.com/duckdb/duckdb/pull/7931)** and **[Hash Aggregate Performance Improvements.](https://github.com/duckdb/duckdb/pull/8475)** When working with large data sets, memory management is always a potential pain point. By using a streaming execution engine and buffer manager, DuckDB supports many operations on larger than memory data sets. DuckDB also aims to support queries where *intermediate* results do not fit into memory by using disk-spilling techniques.
+**[Out-of-Core Hash Aggregates](https://github.com/duckdb/duckdb/pull/7931)** and **[Hash Aggregate Performance Improvements.](https://github.com/duckdb/duckdb/pull/8475)** When working with large datasets, memory management is always a potential pain point. By using a streaming execution engine and buffer manager, DuckDB supports many operations on larger than memory datasets. DuckDB also aims to support queries where *intermediate* results do not fit into memory by using disk-spilling techniques.
 
 In this release, support for disk-spilling techniques is further extended through the support for out-of-core hash aggregates. Now, hash tables constructed during `GROUP BY` queries or `DISTINCT` operations that do not fit in memory due to a large number of unique groups will spill data to disk instead of throwing an out-of-memory exception. Due to the clever use of radix partitioning, performance degradation is gradual, and performance cliffs are avoided. Only the subset of the table that does not fit into memory will be spilled to disk.
 
-The performance of our hash aggregate has also improved in general, especially when there are many groups. For example, we compute the number of unique rows in a data set with 30 million rows and 15 columns by using the following query:
+The performance of our hash aggregate has also improved in general, especially when there are many groups. For example, we compute the number of unique rows in a dataset with 30 million rows and 15 columns by using the following query:
 
 ```sql
 SELECT count(*) FROM (SELECT DISTINCT * FROM tbl);

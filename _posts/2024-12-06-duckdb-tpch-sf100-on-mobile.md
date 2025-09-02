@@ -10,7 +10,7 @@ tags: ["benchmark"]
 
 A few weeks ago, we set out to perform a series of experiments to answer two simple questions:
 
-1. Can DuckDB complete the TPC-H queries on the SF100 data set when running on a new smartphone?
+1. Can DuckDB complete the TPC-H queries on the SF100 dataset when running on a new smartphone?
 2. If so, can DuckDB complete a run in less than 400 seconds, i.e., faster than the system in the research paper that originally introduced vectorized query processing?
 
 These questions took us on an interesting quest.
