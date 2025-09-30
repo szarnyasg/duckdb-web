@@ -10,58 +10,58 @@ artifacts:
       x86_64:
         filename: "duckdb_cli-osx-universal.zip"
         hashes:
-          sha256: "e21a260988e0cac4dc1ccdd350a83e27d783c4be1cb9ffa339f7148addf43b82"
+          sha256: ""
       arm64:
         filename: "duckdb_cli-osx-universal.zip"
         hashes:
-          sha256: "e21a260988e0cac4dc1ccdd350a83e27d783c4be1cb9ffa339f7148addf43b82"
+          sha256: ""
     linux:
       x86_64:
         filename: "duckdb_cli-linux-amd64.zip"
         hashes:
-          sha256: "559398da12db9223fb0663ae65a365b2740e4e35abf009a81350a3f57e175ecc"
+          sha256: ""
       arm64:
         filename: "duckdb_cli-linux-arm64.zip"
         hashes:
-          sha256: "982993fc6173814beaf432d05ef20d8c5ed0f8a903b10938ed53cee2541bdc39"
+          sha256: ""
     windows:
       x86_64:
         filename: "duckdb_cli-windows-amd64.zip"
         hashes:
-          sha256: "efceab16ece9e6be24ddd1ce82a58ca23d27bc4c5defbea40e3bcb82adeed41a"
+          sha256: ""
       arm64:
         filename: "duckdb_cli-windows-arm64.zip"
         hashes:
-          sha256: "53437f18d671a14a09cf742a5cd18f006afab0212c9a655f9d922e12c84505eb"
+          sha256: ""
 
   c:
     linux:
       x86_64:
         filename: "libduckdb-linux-amd64.zip"
         hashes:
-          sha256: "3e7a902ee6cddf7d55035903cf26f14a9a45302bed6fbd379cf34e1c9cc9983f"
+          sha256: ""
       arm64:
         filename: "libduckdb-linux-arm64.zip"
         hashes:
-          sha256: "35b7f391d415e0e7a8a7bc98ddefb547b87b6d3f3820de8e0e07866219d3034c"
+          sha256: ""
     macos:
       x86_64:
         filename: "libduckdb-osx-universal.zip"
         hashes:
-          sha256: "b81db597d72bea1beb20edff78f69961b0bec4a16841996b1d95bd72ee89514c"
+          sha256: ""
       arm64:
         filename: "libduckdb-osx-universal.zip"
         hashes:
-          sha256: "b81db597d72bea1beb20edff78f69961b0bec4a16841996b1d95bd72ee89514c"
+          sha256: ""
     windows:
       x86_64:
         filename: "libduckdb-windows-amd64.zip"
         hashes:
-          sha256: "bf63c13421f97f89463af19d2743e999aed7861f703bcb642f0837a46d8dba39"
+          sha256: ""
       arm64:
         filename: "libduckdb-windows-arm64.zip"
         hashes:
-          sha256: "38486a4014e1e1d4b300c647eaf3bc9b218e0532fd55aca934067cbc4c67d2e9"
+          sha256: ""
 
   java:
     filename: "duckdb_jdbc-1.4.0.0.jar"
